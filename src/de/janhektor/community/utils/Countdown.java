@@ -31,6 +31,9 @@ public class Countdown {
 		Bukkit.getOnlinePlayers().forEach((player) -> player.sendMessage(Main.getInstance().getString("Countdown", countdown)));
 	}
 	
+	/**
+	 * Starts the countdown
+	 */
 	public void start() {
 		this.countdown = this.startTime;
 		task = Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
@@ -51,6 +54,9 @@ public class Countdown {
 		}, 0L, 20L);
 	}
 	
+	/**
+	 * Stops the countdown
+	 */
 	public void stop() {
 		if (this.task != null) {
 			this.task.cancel();
@@ -58,6 +64,10 @@ public class Countdown {
 		}
 	}
 	
+	/**
+	 * A listener for handling countdown events
+	 * @author Alex
+	 */
 	public static interface ICountdownListener {
 		
 		public void onCountdown(int time);
