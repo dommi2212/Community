@@ -1,6 +1,6 @@
 package de.janhektor.community.command;
 
-public interface CommandSettings {
+public interface ICommandSettings {
 	
 	String getMessagePrefix();
 
