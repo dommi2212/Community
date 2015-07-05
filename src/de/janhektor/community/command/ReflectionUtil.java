@@ -76,13 +76,7 @@ public final class ReflectionUtil {
 	}
 	
 	public boolean check() {
-		if (this.COMMAND_MAP == null) {
-			return false;
-		} if (this.COMMANDS == null) {
-			return false;
-		} else {
-			return true;
-		}
+		return this.COMMAND_MAP != null && this.COMMANDS != null;
 	}
 	
 	@SuppressWarnings("serial")

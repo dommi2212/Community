@@ -10,31 +10,20 @@ import java.util.ResourceBundle;
 
 public class Main extends JavaPlugin {
 
-	// Instance handling for this class
-	
-	private static Main inst;
+	// ---------------------- [ Instance for Singleton ] ---------------------- //
+	private static Main instance;
 
-	public static Main inst() {
-		return inst;
-	}
-	
-	public Main() {
-		inst = this;
-	}
-	
-	
-	// Private members (grouped)
-	
+	// ---------------------- [ members ] ---------------------- //
 	private LocationManager locationManager;
 	
 	private Locale locale;
 	private ResourceBundle resourceBundle;
 
-	
-	// Enable/Disable methods
+	// ---------------------- [ Enable/Disable ] ---------------------- //
 	
 	@Override
 	public void onEnable() {
+		instance = this;
 		this.locale = new Locale("en");
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", this.locale);
 		this.locationManager = new LocationManager();
@@ -45,8 +34,8 @@ public class Main extends JavaPlugin {
 
 	}
 
-	
-	// Public methods
+
+	// ---------------------- [ Methods ] ---------------------- //
 	
 	public LocationManager getLocationManager() {
 		return locationManager;
@@ -56,5 +45,9 @@ public class Main extends JavaPlugin {
 		String result = this.resourceBundle.getString(key);
 		result = MessageFormat.format(result, replacements);
 		return ChatColor.translateAlternateColorCodes('&', result);
+	}
+
+	public static Main getInstance(){
+		return instance;
 	}
 }

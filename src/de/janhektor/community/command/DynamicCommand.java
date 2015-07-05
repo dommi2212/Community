@@ -3,6 +3,7 @@ package de.janhektor.community.command;
 import java.util.Arrays;
 import java.util.List;
 
+import de.janhektor.community.utils.Validate;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandExecutor;
@@ -51,13 +52,9 @@ class DynamicCommand extends Command implements PluginIdentifiableCommand {
 
 	@Override
 	public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
-		if (sender == null) {
-			throw new NullPointerException("Sender cannot be null!");
-		} if (args == null) {
-			throw new NullPointerException("Args cannot be null!");
-		} if (alias == null) {
-			throw new NullPointerException("Alias cannot be null!");
-		}
+		Validate.notNull( sender, "Sender cannot be null!" );
+		Validate.notNull( args, "Arguments cannot be null!" );
+		Validate.notNull( alias, "Alias cannot be null!" );
 		
 		List<String> completions = null;
 		
