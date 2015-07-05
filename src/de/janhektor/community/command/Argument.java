@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 
 public abstract class Argument<T extends Plugin> {
 	
-	protected final T plugin;
+	private final T plugin;
 	
 	public Argument(T plugin) {
 		if (plugin == null) {

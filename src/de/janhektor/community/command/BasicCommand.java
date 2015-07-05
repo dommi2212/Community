@@ -3,6 +3,7 @@ package de.janhektor.community.command;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.janhektor.community.utils.Validate;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,9 +16,9 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	
 	private static ReflectionUtil REFLECT;
 	
-	public static interface DefaultExecutor {
+	public interface DefaultExecutor {
 		
-		public abstract boolean onExecute(CommandSender sender, Command cmd, String label, String[] args);
+		boolean onExecute(CommandSender sender, Command cmd, String label, String[] args);
 		
 	}
 	
@@ -40,14 +41,10 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	private final Plugin plugin;
 	
 	public BasicCommand(String name, CommandSettings settings, Plugin plugin) {
-		if (name == null) {
-			throw new NullPointerException("Name cannot be null!");
-		} if (settings == null) {
-			throw new NullPointerException("Settings cannot be null!");
-		} if (plugin == null) {
-			throw new NullPointerException("Plugin cannot be null!");
-		}
-		
+		Validate.notNull( name, "Name cannot be null!" );
+		Validate.notNull( settings, "Settings cannot be null!" );
+		Validate.notNull( plugin, "Plugin cannot be null!" );
+
 		this.name = name;
 		this.plugin = plugin;
 		this.settings = settings;
@@ -197,12 +194,9 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	}
 	
 	public void registerArgument(String name, Argument<?> arg) {
-		if (name == null) {
-			throw new NullPointerException("Name cannot be null!");
-		} if (arg == null) {
-			throw new NullPointerException("Argument cannot be null!");
-		}
-		
+		Validate.notNull( name, "Name cannot be null!" );
+		Validate.notNull( arg, "Argument cannot be null!" );
+
 		this.arguments.put(name, arg);
 	}
 	
@@ -211,9 +205,8 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	}
 
 	public Argument<?> getArgument(String name) {
-		if (name == null) {
-			throw new NullPointerException("Name cannot be null!");
-		}
+		Validate.notNull( name, "Name cannot be null!" );
+
 		return this.arguments.get(name);
 	}
 	

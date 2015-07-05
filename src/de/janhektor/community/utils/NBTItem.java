@@ -65,8 +65,7 @@ public class NBTItem {
 
 		private static Class<?> getCraftItemstack() {
 			try {
-				Class<?> clazz = Class.forName("org.bukkit.craftbukkit" + VERSION + "inventory.CraftItemStack");
-				return clazz;
+				return Class.forName("org.bukkit.craftbukkit" + VERSION + "inventory.CraftItemStack");
 			} catch (Exception ex) {
 				ex.printStackTrace();
 				return null;
@@ -100,8 +99,7 @@ public class NBTItem {
 			Method method;
 			try {
 				method = clazz.getMethod("getTag");
-				Object answer = method.invoke(nmsitem);
-				return answer;
+				return method.invoke(nmsitem);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -113,8 +111,7 @@ public class NBTItem {
 			Method method;
 			try {
 				method = clazz.getMethod("asNMSCopy", ItemStack.class);
-				Object answer = method.invoke(clazz, item);
-				return answer;
+				return method.invoke(clazz, item);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

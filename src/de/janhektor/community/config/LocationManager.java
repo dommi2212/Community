@@ -62,9 +62,9 @@ public class LocationManager {
 	}
 
 	private void createFile() {
-		Main.inst().getDataFolder().mkdirs();
+		Main.getInstance().getDataFolder().mkdirs();
 		if (this.file == null) {
-			this.file = new File(Main.inst().getDataFolder(), "locations.yml");
+			this.file = new File(Main.getInstance().getDataFolder(), "locations.yml");
 		}
 		
 		try {

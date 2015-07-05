@@ -2,14 +2,14 @@ package de.janhektor.community.command;
 
 public interface CommandSettings {
 	
-	public abstract String getMessagePrefix();
+	String getMessagePrefix();
 
-	public abstract String getMessageNoPermission();
+	String getMessageNoPermission();
 
-	public abstract String getMessageSyntax();
+	String getMessageSyntax();
 
-	public abstract String getMessageOnlyPlayer();
+	String getMessageOnlyPlayer();
 
-	public abstract String getMessageDefault();
+	String getMessageDefault();
 	
 }
