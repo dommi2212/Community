@@ -200,7 +200,7 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 		if (name == null) {
 			throw new NullPointerException("Name cannot be null!");
 		} if (arg == null) {
-			throw new NullPointerException("Arg cannot be null!");
+			throw new NullPointerException("Argument cannot be null!");
 		}
 		
 		this.arguments.put(name, arg);
