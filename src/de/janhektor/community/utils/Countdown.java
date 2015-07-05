@@ -28,7 +28,9 @@ public class Countdown {
 	}
 	
 	private void sendCountdown() {
-		Bukkit.getOnlinePlayers().forEach((player) -> player.sendMessage(Main.getInstance().getString("Countdown", countdown)));
+		Bukkit.getOnlinePlayers().forEach((player) -> {
+			player.sendMessage(Main.getInstance().getString("Countdown", countdown));
+		});
 	}
 	
 	/**
