@@ -70,8 +70,8 @@ public class Countdown {
 	 */
 	public static interface ICountdownListener {
 		
-		public void onCountdown(int time);
-		public void onEnd();
+		public abstract void onCountdown(int time);
+		public abstract void onEnd();
 		
 	}
 }
