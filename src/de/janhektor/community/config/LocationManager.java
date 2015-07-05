@@ -19,7 +19,7 @@ public class LocationManager {
 
     public Location getLocation(String key) {
         Object value = configuration.get(key);
-        if(value instanceof Map) {
+        if (value instanceof Map) {
             return Location.deserialize((Map<String, Object>) value);
         }
         return null;
@@ -31,15 +31,17 @@ public class LocationManager {
 
     private void createFile() {
         Main.inst().getDataFolder().mkdirs();
-        if(this.file == null)
+        if (this.file == null) {
             this.file = new File(Main.inst().getDataFolder(), "locations.yml");
+        }
         try {
             file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(this.configuration == null)
+        if (this.configuration == null) {
             configuration = YamlConfiguration.loadConfiguration(file);
+        }
     }
 
     public void save() {
