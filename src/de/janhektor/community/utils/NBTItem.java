@@ -5,11 +5,6 @@ import java.lang.reflect.Method;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * @author WolfPlaysDE
- * This class in licensed under GPLv3
- * For more information look at http://www.gnu.org/licenses/gpl-3.0
- */
 public class NBTItem {
 
 	private ItemStack bukkititem;
