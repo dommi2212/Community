@@ -10,50 +10,52 @@ public class NBTItem {
 	private ItemStack bukkititem;
 
 	public NBTItem(ItemStack item) {
-		bukkititem = item.clone();
+		this.bukkititem = item.clone();
 	}
 
 	public ItemStack getItem() {
-		return bukkititem;
+		return this.bukkititem;
 	}
 
 	public void setString(String key, String s) {
-		bukkititem = NBTReflection.setString(bukkititem, key, s);
+		this.bukkititem = NBTReflection.setString(this.bukkititem, key, s);
 	}
 
 	public String getString(String key) {
-		return NBTReflection.getString(bukkititem, key);
+		return NBTReflection.getString(this.bukkititem, key);
 	}
 
 	public void setInteger(String key, Integer i) {
-		bukkititem = NBTReflection.setInt(bukkititem, key, i);
+		this.bukkititem = NBTReflection.setInt(this.bukkititem, key, i);
 	}
 
 	public Integer getInteger(String key) {
-		return NBTReflection.getInt(bukkititem, key);
+		return NBTReflection.getInt(this.bukkititem, key);
 	}
 
 	public void setDouble(String key, Double d) {
-		bukkititem = NBTReflection.setDouble(bukkititem, key, d);
+		this.bukkititem = NBTReflection.setDouble(this.bukkititem, key, d);
 	}
 
 	public Double getDouble(String key) {
-		return NBTReflection.getDouble(bukkititem, key);
+		return NBTReflection.getDouble(this.bukkititem, key);
 	}
 
 	public void setBoolean(String key, Boolean b) {
-		bukkititem = NBTReflection.setBoolean(bukkititem, key, b);
+		this.bukkititem = NBTReflection.setBoolean(this.bukkititem, key, b);
 	}
 
 	public Boolean getBoolean(String key) {
-		return NBTReflection.getBoolean(bukkititem, key);
+		return NBTReflection.getBoolean(this.bukkititem, key);
 	}
 
 	public Boolean hasKey(String key) {
-		return NBTReflection.hasKey(bukkititem, key);
+		return NBTReflection.hasKey(this.bukkititem, key);
 	}
 
-	// NBT Classes/Methodes
+	// ---------------------- //
+	// NBT Classes & Methods  //
+	// ---------------------- //
 	private static class NBTReflection {
 
 		static String VERSION;

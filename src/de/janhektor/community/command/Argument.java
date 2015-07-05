@@ -4,15 +4,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 
+import de.janhektor.community.utils.Validate;
+
 public abstract class Argument<T extends Plugin> {
 	
 	private final T plugin;
 	
 	public Argument(T plugin) {
-		if (plugin == null) {
-			throw new NullPointerException("Plugin cannot be null!");
-		}
-		
+		Validate.notNull(plugin, "Plugin cannot be null!");
 		this.plugin = plugin;
 	}
 	
@@ -27,6 +26,4 @@ public abstract class Argument<T extends Plugin> {
 	protected final T getPlugin() {
 		return this.plugin;
 	}
-
-	
 }

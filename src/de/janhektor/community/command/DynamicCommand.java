@@ -14,9 +14,9 @@ import org.bukkit.plugin.Plugin;
 
 class DynamicCommand extends Command implements PluginIdentifiableCommand {
 
+	private final Plugin plugin;
 	private CommandExecutor exec;
 	private TabCompleter tabCompleter;
-	private Plugin plugin;
 
 	public DynamicCommand(Plugin plugin, String name, String description, CommandExecutor exec) {
 		super(name);

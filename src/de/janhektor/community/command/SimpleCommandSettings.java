@@ -16,10 +16,10 @@ public class SimpleCommandSettings implements CommandSettings {
 		}
 		
 		this.messagePrefix = messagePrefix;
-		this.messageNoPermission = "ยง7You don't have permission to do that.";
-		this.messageSyntax = "ยง7Syntax: %s";
-		this.messageOnlyPlayer = "ยง7This command is only for players.";
-		this.messageDefault = "ยง7Please type a specific argument.";
+		this.messageNoPermission = "ง7You don't have permission to do that.";
+		this.messageSyntax = "ง7Syntax: %s";
+		this.messageOnlyPlayer = "ง7This command is only for players.";
+		this.messageDefault = "ง7Please type a specific argument.";
 	}
 	
 	public SimpleCommandSettings() {

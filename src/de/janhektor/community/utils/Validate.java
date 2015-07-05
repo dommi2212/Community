@@ -1,6 +1,5 @@
 package de.janhektor.community.utils;
 
-import java.util.Objects;
 
 /**
  * Created by Jasmin on 05.07.2015

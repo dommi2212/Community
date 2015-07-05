@@ -16,7 +16,7 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	
 	private static ReflectionUtil REFLECT;
 	
-	public interface DefaultExecutor {
+	public static interface DefaultExecutor {
 		
 		boolean onExecute(CommandSender sender, Command cmd, String label, String[] args);
 		

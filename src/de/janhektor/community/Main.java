@@ -1,12 +1,14 @@
 package de.janhektor.community;
 
 import de.janhektor.community.config.LocationManager;
+
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 public class Main extends JavaPlugin {
 
@@ -23,10 +25,14 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
-		instance = this;
+		Main.instance = this;
+		
 		this.locale = new Locale("en");
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", this.locale);
 		this.locationManager = new LocationManager();
+		
+		this.getLogger().log(Level.INFO, "Community plugin version " + this.getDescription().getVersion()
+				+ " by " + this.getDescription().getAuthors().toString() + " enabled!");
 	}
 
 	@Override
