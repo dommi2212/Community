@@ -5,12 +5,6 @@ import java.lang.reflect.Field;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-/**
- * Created by WolfPlaysDE
- * On: 03.06.2015
- * At: 13:52:31
- * Project: Plugin
- */
 public class TabActionTitel {
    
    private static Class<?> title = getNMSClass("PacketPlayOutTitle");
