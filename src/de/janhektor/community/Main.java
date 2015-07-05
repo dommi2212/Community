@@ -10,37 +10,49 @@ import java.util.ResourceBundle;
 
 public class Main extends JavaPlugin {
 
-    private static Main inst;
-    private LocationManager locationManager;
+	// Instance handling for this class
+	
+	private static Main inst;
+
+	public static Main inst() {
+		return inst;
+	}
+	
+	public Main() {
+		inst = this;
+	}
+	
+	
+	// Private members (grouped)
+	
+	private LocationManager locationManager;
+	
 	private Locale locale;
 	private ResourceBundle resourceBundle;
 
-    public Main() {
-        inst = this;
-    }
-
-    @Override
+	
+	// Enable/Disable methods
+	
+	@Override
 	public void onEnable() {
 		this.locale = new Locale("en");
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", this.locale);
-        this.locationManager = new LocationManager();
-    }
-	
+		this.locationManager = new LocationManager();
+	}
+
 	@Override
 	public void onDisable() {
-		
+
 	}
-    
-    
-    public static Main inst() {
-        return inst;
-    }
 
-    public LocationManager getLocationManager() {
-        return locationManager;
-    }
+	
+	// Public methods
+	
+	public LocationManager getLocationManager() {
+		return locationManager;
+	}
 
-    public String getString(String key, Object... replacements) {
+	public String getString(String key, Object... replacements) {
 		String result = this.resourceBundle.getString(key);
 		result = MessageFormat.format(result, replacements);
 		return ChatColor.translateAlternateColorCodes('&', result);
