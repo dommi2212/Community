@@ -49,37 +49,42 @@ public class SimpleCommandSettings implements CommandSettings {
 	}
 
 	public void setMessagePrefix(String messagePrefix) {
-		if (messagePrefix == null)
+		if (messagePrefix == null) {
 			throw new NullPointerException("MessagePrefix cannot be null!");
+		}
 		
 		this.messagePrefix = messagePrefix;
 	}
 
 	public void setMessageNoPermission(String messageNoPermission) {
-		if (messageNoPermission == null)
+		if (messageNoPermission == null) {
 			throw new NullPointerException("MessageNoPermission cannot be null!");
-		
+		}
+			
 		this.messageNoPermission = messageNoPermission;
 	}
 
 	public void setMessageSyntax(String messageSyntax) {
-		if (messageSyntax == null)
+		if (messageSyntax == null) {
 			throw new NullPointerException("MessageSyntax cannot be null!");
+		}
 		
 		this.messageSyntax = messageSyntax;
 	}
 
 	public void setMessageOnlyPlayer(String messageOnlyPlayer) {
-		if (messageOnlyPlayer == null)
+		if (messageOnlyPlayer == null) {
 			throw new NullPointerException("MessageOnlyPlayer cannot be null!");
+		}
 		
 		this.messageOnlyPlayer = messageOnlyPlayer;
 	}
 
 	public void setMessageDefault(String messageDefault) {
-		if (messageDefault == null)
+		if (messageDefault == null) {
 			throw new NullPointerException("MessageDefault cannot be null!");
-		
+		}
+			
 		this.messageDefault = messageDefault;
 	}
 	

@@ -9,8 +9,9 @@ public abstract class Argument<T extends Plugin> {
 	protected final T plugin;
 	
 	public Argument(T plugin) {
-		if (plugin == null)
+		if (plugin == null) {
 			throw new NullPointerException("Plugin cannot be null!");
+		}
 		
 		this.plugin = plugin;
 	}

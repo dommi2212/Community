@@ -40,12 +40,13 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	private final Plugin plugin;
 	
 	public BasicCommand(String name, CommandSettings settings, Plugin plugin) {
-		if (name == null)
+		if (name == null) {
 			throw new NullPointerException("Name cannot be null!");
-		if (settings == null)
+		} if (settings == null) {
 			throw new NullPointerException("Settings cannot be null!");
-		if (plugin == null)
+		} if (plugin == null) {
 			throw new NullPointerException("Plugin cannot be null!");
+		}
 		
 		this.name = name;
 		this.plugin = plugin;
@@ -101,8 +102,9 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 				
 				sender.sendMessage(this.messagePrefix + this.settings.getMessageDefault());
 			} else {
-				if (this.executor != null)
+				if (this.executor != null) {
 					return this.executor.onExecute(sender, command, label, args);
+				}
 			}
 		}
 		
@@ -157,27 +159,29 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 		DynamicCommand dynCmd = null;
 		String descr = this.description != null ? this.description : "";
 		
-		if (this.aliases == null && this.usage == null)
+		if (this.aliases == null && this.usage == null) {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this);
-		else if (this.aliases != null && this.usage == null)
+		} else if (this.aliases != null && this.usage == null) {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this, this.aliases);
-		else if (this.aliases == null && this.usage != null)
+		} else if (this.aliases == null && this.usage != null) {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this.usage, this);
-		else if (this.aliases != null && this.usage != null)
+		} else if (this.aliases != null && this.usage != null) {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this.usage, this, this.aliases);
+		}
 		
-		if (this.tabCompleter != null) 
+		if (this.tabCompleter != null) {
 			dynCmd.setTabCompleter(this.tabCompleter);
-		
-		if (!BasicCommand.REFLECT.check())
+		} if (!BasicCommand.REFLECT.check()) {
 			System.out.println("The command " + this.name + " could not be created!");
+		}
 		
 		BasicCommand.REFLECT.COMMAND_MAP.register((this.key == null || this.key.isEmpty() || this.key.trim().isEmpty()) ? this.name : this.key, dynCmd);
 	}
 	
 	public void unregister() {
-		if (!BasicCommand.REFLECT.check())
+		if (!BasicCommand.REFLECT.check()) {
 			System.out.println("The command " + this.name + " could not be unregistered!");
+		}
 		
 		Map<String, Command> commands = BasicCommand.REFLECT.COMMANDS;
 		
@@ -193,10 +197,11 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	}
 	
 	public void registerArgument(String name, Argument<?> arg) {
-		if (name == null)
+		if (name == null) {
 			throw new NullPointerException("Name cannot be null!");
-		if (arg == null)
+		} if (arg == null) {
 			throw new NullPointerException("Arg cannot be null!");
+		}
 		
 		this.arguments.put(name, arg);
 	}
@@ -206,9 +211,9 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	}
 
 	public Argument<?> getArgument(String name) {
-		if (name == null)
+		if (name == null) {
 			throw new NullPointerException("Name cannot be null!");
-		
+		}
 		return this.arguments.get(name);
 	}
 	

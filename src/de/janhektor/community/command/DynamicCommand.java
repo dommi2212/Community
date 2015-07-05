@@ -51,35 +51,39 @@ class DynamicCommand extends Command implements PluginIdentifiableCommand {
 
 	@Override
 	public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
-		if (sender == null) 
+		if (sender == null) {
 			throw new NullPointerException("Sender cannot be null!");
-		if (args == null) 
+		} if (args == null) {
 			throw new NullPointerException("Args cannot be null!");
-		if (alias == null) 
+		} if (alias == null) {
 			throw new NullPointerException("Alias cannot be null!");
+		}
 		
 		List<String> completions = null;
 		
 		try {
-			if (this.tabCompleter != null) 
+			if (this.tabCompleter != null) {
 				completions = this.tabCompleter.onTabComplete(sender, this, alias, args);
-			if ((completions == null) && ((this.exec instanceof TabCompleter))) 
+			} if ((completions == null) && ((this.exec instanceof TabCompleter))) {
 				completions = ((TabCompleter) this.exec).onTabComplete(sender, this, alias, args);
+			}
 		} catch (Throwable ex) {
 			StringBuilder message = new StringBuilder();
 			message.append("Unhandled exception during tab completion for command '/").append(alias).append(' ');
 			
-			for (String arg : args) 
+			for (String arg : args) {
 				message.append(arg).append(' ');
-			
+			}
+				
 			message.deleteCharAt(message.length() - 1).append("' in plugin ").append(this.plugin.getDescription().getFullName());
 			
 			throw new CommandException(message.toString(), ex);
 		}
 
-		if (completions == null) 
+		if (completions == null) {
 			return super.tabComplete(sender, alias, args);
-		
+		}
+			
 		return completions;
 	}
 
