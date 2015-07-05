@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class TabActionTitel {
+public class TabActionTitle {
    
    private static Class<?> title = getNMSClass("PacketPlayOutTitle");
    private static Class<?> enumtitleaction = getNMSClass("PacketPlayOutTitle$EnumTitleAction");
@@ -43,7 +43,7 @@ public class TabActionTitel {
    
    public static void sendTitle(Player p, String title) {
       try {
-         Object t = TabActionTitel.title.newInstance();
+         Object t = TabActionTitle.title.newInstance();
          Field f = t.getClass().getDeclaredField("a");
          f.setAccessible(true);
          f.set(t, getField(enumtitleaction.getDeclaredField("TITLE")).get(null));
