@@ -51,6 +51,7 @@ public class GameCountdown {
 					GameCountdown.this.countdownListener.onEnd();
 					GameCountdown.this.stop();
 				}
+				GameCountdown.this.countdown--;
 			}
 			
 		}, 0L, 20L);
