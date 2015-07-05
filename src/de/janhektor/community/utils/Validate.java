@@ -3,7 +3,7 @@ package de.janhektor.community.utils;
 import java.util.Objects;
 
 /**
- * Erstellt von Jasmin am 05.07.2015 um 17:58
+ * Created by Jasmin on 05.07.2015
  */
 public class Validate {
 
