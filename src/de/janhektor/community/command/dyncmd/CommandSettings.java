@@ -1,15 +1,15 @@
 package de.janhektor.community.command.dyncmd;
 
-public interface CommandSettings {
+public abstract interface CommandSettings {
 	
-	String getMessagePrefix();
+	public abstract String getMessagePrefix();
 
-	String getMessageNoPermission();
+	public abstract String getMessageNoPermission();
 
-	String getMessageSyntax();
+	public abstract String getMessageSyntax();
 
-	String getMessageOnlyPlayer();
+	public abstract String getMessageOnlyPlayer();
 
-	String getMessageDefault();
+	public abstract String getMessageDefault();
 	
 }

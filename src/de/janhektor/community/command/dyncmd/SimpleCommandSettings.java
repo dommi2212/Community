@@ -11,9 +11,7 @@ public class SimpleCommandSettings implements CommandSettings {
 	private String messageDefault;
 	
 	public SimpleCommandSettings(String messagePrefix) {
-		if (messagePrefix == null) {
-			throw new NullPointerException("MessagePrefix cannot be null!");
-		}
+		Validate.notNull( messagePrefix, "MessagePrefix cannot be null!" );
 		
 		this.messagePrefix = messagePrefix;
 		this.messageNoPermission = "§7You don't have permission to do that.";

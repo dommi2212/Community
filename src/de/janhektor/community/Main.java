@@ -18,8 +18,7 @@ public class Main extends JavaPlugin {
 	
 	// ---------------------- [ Members ] ---------------------- //
 	private LocationManager locationManager;
-	
-	private Locale locale;
+
 	private ResourceBundle resourceBundle;
 
 	
@@ -30,9 +29,9 @@ public class Main extends JavaPlugin {
 		long startTime = System.currentTimeMillis();
 		
 		Main.instance = this;
-		
-		this.locale = new Locale("en");
-		this.resourceBundle = ResourceBundle.getBundle("resources.strings", this.locale);
+
+		Locale locale = new Locale( "en" );
+		this.resourceBundle = ResourceBundle.getBundle("resources.strings", locale );
 		this.locationManager = new LocationManager();
 		
 		long stopTime = System.currentTimeMillis();
