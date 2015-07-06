@@ -1,4 +1,4 @@
-package de.janhektor.community.command;
+package de.janhektor.community.command.dyncmd;
 
 import java.lang.reflect.Field;
 import java.util.Map;

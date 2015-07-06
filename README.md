@@ -37,8 +37,24 @@ Feel free to join us! Clone the repository, modify the sourcecode and start a pu
 We need <b>every</b> developer! Even if your are a noob, beginner, advanced learner or expert! We have enough things to do!<br>
 If you are not familiar with Git or GitHub you can look for tutorials in the internet.
 A lot of information can be found [here](http://git-scm.com/docs/gittutorial).<br>
+
+<br>
+<h4>Coding Guidelines</h4>
 Please keep in mind that we observe the [Google Code-Style Guidelines](http://google.github.io/styleguide/javaguide.html).
 Additionally we are working with Java SE 8 / JDK 1.8. Therefore you'll need a Java compiler for language level 8 or higher to compile the source.
+However, there are some important exceptions / changes:
+<ul>
+  <li>License notes are not required - all code is licensed under project license (<b>MIT license</b>)
+  <li>@author tags are <b>not allowed</b> - enough attention to the authors is given in <b>plugin.yml</b></li>
+  <li>Tabs are allowed for indentions; but only <b>1 Tab</b> instead of <b>4 Spaces</b></li>
+  <li>It's allowed, but not required to declare interface methods with addtional <b>public abstract</b></li>
+  <li>It's recommended to work <b>without</b> whitespaces in statements<sup>1</sup></li>
+</ul>
+<p>
+  <sup>1</sup> Style for statements, parameter-lists, ...<br>
+  Recommended: if (true) { ... }<br>
+  Not recommended, but allowed: if ( true ) { ... }<br>
+</p>
 
 <br>
 <h4>For Server-Owners</h4>

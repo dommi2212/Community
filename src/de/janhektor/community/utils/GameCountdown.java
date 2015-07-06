@@ -11,7 +11,7 @@ import de.janhektor.community.Main;
 public class GameCountdown {
 	
 	private int startTime;
-	private ICountdownListener countdownListener;
+	private CountdownListener countdownListener;
 	
 	private int countdown;
 	private BukkitTask task;
@@ -21,13 +21,13 @@ public class GameCountdown {
 	 * @param startTime Start time of the countdown
 	 * @param countdownListener The countdown listener
 	 */
-	public GameCountdown(int startTime, ICountdownListener countdownListener) {
+	public GameCountdown(int startTime, CountdownListener countdownListener) {
 		this.startTime = startTime;
 		this.countdownListener = countdownListener;
 	}
 	
 	private void sendCountdown() {
-		Bukkit.getOnlinePlayers().forEach((player) -> {
+		Bukkit.getOnlinePlayers().forEach( player -> {
 			player.sendMessage(Main.getInstance().getString("GameCountdown", countdown));
 		});
 	}
@@ -37,23 +37,18 @@ public class GameCountdown {
 	 */
 	public void start() {
 		this.countdown = this.startTime;
-		task = Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
-			
-			@Override
-			public void run() {
-				if (GameCountdown.this.countdown % 30 == 0 || GameCountdown.this.countdown <= 10) {
-					GameCountdown.this.sendCountdown();
-					GameCountdown.this.countdownListener.onCountdown(countdown);
-				} else if (countdown == 0) {
-					GameCountdown.this.countdownListener.onCountdown(0);
-				} else if (countdown < 0) {
-					GameCountdown.this.countdownListener.onEnd();
-					GameCountdown.this.stop();
-				}
-				GameCountdown.this.countdown--;
-			}
-			
-		}, 0L, 20L);
+		task = Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), () -> {
+            if (this.countdown % 30 == 0 || this.countdown <= 10) {
+                this.sendCountdown();
+                this.countdownListener.onCountdown(countdown);
+            } else if (countdown == 0) {
+                this.countdownListener.onCountdown(0);
+            } else if (countdown < 0) {
+                this.countdownListener.onEnd();
+                this.stop();
+            }
+           this.countdown--;
+        }, 0L, 20L);
 	}
 	
 	/**
@@ -69,7 +64,7 @@ public class GameCountdown {
 	/**
 	 * A listener for handling countdown events
 	 */
-	public static interface ICountdownListener {
+	public static interface CountdownListener {
 		
 		public abstract void onCountdown(int time);
 		public abstract void onEnd();
