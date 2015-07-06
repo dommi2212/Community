@@ -1,4 +1,4 @@
-package de.janhektor.community.command;
+package de.janhektor.community.command.dyncmd;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

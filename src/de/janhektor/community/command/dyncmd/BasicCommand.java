@@ -1,4 +1,4 @@
-package de.janhektor.community.command;
+package de.janhektor.community.command.dyncmd;
 
 import java.util.HashMap;
 import java.util.Map;
