@@ -25,14 +25,18 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
+		long startTime = System.currentTimeMillis();
+		
 		Main.instance = this;
 		
 		this.locale = new Locale("en");
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", this.locale);
 		this.locationManager = new LocationManager();
 		
+		long stopTime = System.currentTimeMillis();
+		
 		this.getLogger().log(Level.INFO, "Community plugin version " + this.getDescription().getVersion()
-				+ " by " + this.getDescription().getAuthors().toString() + " enabled!");
+				+ " by " + this.getDescription().getAuthors().toString() + " enabled! (" + (stopTime - startTime) + " ms)");
 	}
 
 	@Override
