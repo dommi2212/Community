@@ -163,7 +163,7 @@ public class TabActionTitle {
    private static Object getNMSPlayer(Player p) {
       try {
          return p.getClass().getMethod("getHandle").invoke(p);
-      }catch (Exception e) {
+      } catch (Exception e) {
          e.printStackTrace();
       }
       return null;

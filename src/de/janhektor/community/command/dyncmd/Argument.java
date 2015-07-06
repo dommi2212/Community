@@ -8,7 +8,7 @@ import de.janhektor.community.utils.Validate;
 
 public abstract class Argument<T extends Plugin> {
 	
-	private final T plugin;
+	protected final T plugin;
 	
 	public Argument(T plugin) {
 		Validate.notNull(plugin, "Plugin cannot be null!");

@@ -12,7 +12,7 @@ import de.janhektor.community.Main;
 public class GameCountdown {
 	
 	private int startTime;
-	private ICountdownListener countdownListener;
+	private CountdownListener countdownListener;
 	
 	private int countdown;
 	private BukkitTask task;
@@ -22,7 +22,7 @@ public class GameCountdown {
 	 * @param startTime Start time of the countdown
 	 * @param countdownListener The countdown listener
 	 */
-	public GameCountdown(int startTime, ICountdownListener countdownListener) {
+	public GameCountdown(int startTime, CountdownListener countdownListener) {
 		this.startTime = startTime;
 		this.countdownListener = countdownListener;
 	}
@@ -66,7 +66,7 @@ public class GameCountdown {
 	 * A listener for handling countdown events
 	 * @author Alex
 	 */
-	public static interface ICountdownListener {
+	public static interface CountdownListener {
 		
 		public abstract void onCountdown(int time);
 		public abstract void onEnd();

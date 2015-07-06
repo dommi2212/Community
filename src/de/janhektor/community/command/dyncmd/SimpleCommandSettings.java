@@ -2,7 +2,7 @@ package de.janhektor.community.command.dyncmd;
 
 import de.janhektor.community.utils.Validate;
 
-public class SimpleCommandSettings implements ICommandSettings {
+public class SimpleCommandSettings implements CommandSettings {
 
 	private String messagePrefix;
 	private String messageNoPermission;

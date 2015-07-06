@@ -1,6 +1,6 @@
 package de.janhektor.community.command.dyncmd;
 
-public interface ICommandSettings {
+public interface CommandSettings {
 	
 	String getMessagePrefix();
 

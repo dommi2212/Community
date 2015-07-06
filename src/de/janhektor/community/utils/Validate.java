@@ -6,10 +6,10 @@ package de.janhektor.community.utils;
  */
 public class Validate {
 
-    public static void notNull( Object object, String error ){
-        if( object == null ) throw new NullPointerException( error );
-    }
-
-
+	public static void notNull(Object object, String error) {
+		if (object == null) {
+			throw new NullPointerException(error);
+		}
+	}
 
 }

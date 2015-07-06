@@ -37,13 +37,13 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	private TabCompleter tabCompleter;
 	
 	private final String name;
-	private final ICommandSettings settings;
+	private final CommandSettings settings;
 	private final Plugin plugin;
 	
-	public BasicCommand(String name, ICommandSettings settings, Plugin plugin) {
-		Validate.notNull( name, "Name cannot be null!" );
-		Validate.notNull( settings, "Settings cannot be null!" );
-		Validate.notNull( plugin, "Plugin cannot be null!" );
+	public BasicCommand(String name, CommandSettings settings, Plugin plugin) {
+		Validate.notNull(name, "Name cannot be null!");
+		Validate.notNull(settings, "Settings cannot be null!");
+		Validate.notNull(plugin, "Plugin cannot be null!");
 
 		this.name = name;
 		this.plugin = plugin;
@@ -194,8 +194,8 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	}
 	
 	public void registerArgument(String name, Argument<?> arg) {
-		Validate.notNull( name, "Name cannot be null!" );
-		Validate.notNull( arg, "Argument cannot be null!" );
+		Validate.notNull(name, "Name cannot be null!");
+		Validate.notNull(arg, "Argument cannot be null!");
 
 		this.arguments.put(name, arg);
 	}
@@ -205,7 +205,7 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	}
 
 	public Argument<?> getArgument(String name) {
-		Validate.notNull( name, "Name cannot be null!" );
+		Validate.notNull(name, "Name cannot be null!");
 
 		return this.arguments.get(name);
 	}
