@@ -37,8 +37,7 @@ public class Main extends JavaPlugin {
 		long stopTime = System.currentTimeMillis();
 		
 		this.getLogger().log(Level.INFO, "Community plugin version " + this.getDescription().getVersion()
-				+ " by " + this.getAuthors() + " enabled!"
-				+ " by " + this.getDescription().getAuthors().toString() + " enabled! (" + (stopTime - startTime) + " ms)");
+				+ " by " + this.getAuthors() + " enabled! (" + (stopTime - startTime) + " ms)");
 	}
 
 	@Override
@@ -47,7 +46,6 @@ public class Main extends JavaPlugin {
 	}
 
 
-	
 	// ---------------------- [ Methods ] ---------------------- //
 	
 	public String getAuthors() {
