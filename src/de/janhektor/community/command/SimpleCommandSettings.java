@@ -2,7 +2,7 @@ package de.janhektor.community.command;
 
 import de.janhektor.community.utils.Validate;
 
-public class SimpleCommandSettings implements CommandSettings {
+public class SimpleCommandSettings implements ICommandSettings {
 
 	private String messagePrefix;
 	private String messageNoPermission;

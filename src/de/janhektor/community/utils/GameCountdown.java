@@ -28,7 +28,7 @@ public class GameCountdown {
 	}
 	
 	private void sendCountdown() {
-		Bukkit.getOnlinePlayers().forEach((player) -> {
+		Bukkit.getOnlinePlayers().forEach( player -> {
 			player.sendMessage(Main.getInstance().getString("GameCountdown", countdown));
 		});
 	}
@@ -38,23 +38,18 @@ public class GameCountdown {
 	 */
 	public void start() {
 		this.countdown = this.startTime;
-		task = Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
-			
-			@Override
-			public void run() {
-				if (GameCountdown.this.countdown % 30 == 0 || GameCountdown.this.countdown <= 10) {
-					GameCountdown.this.sendCountdown();
-					GameCountdown.this.countdownListener.onCountdown(countdown);
-				} else if (countdown == 0) {
-					GameCountdown.this.countdownListener.onCountdown(0);
-				} else if (countdown < 0) {
-					GameCountdown.this.countdownListener.onEnd();
-					GameCountdown.this.stop();
-				}
-				GameCountdown.this.countdown--;
-			}
-			
-		}, 0L, 20L);
+		task = Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), () -> {
+            if (this.countdown % 30 == 0 || this.countdown <= 10) {
+                this.sendCountdown();
+                this.countdownListener.onCountdown(countdown);
+            } else if (countdown == 0) {
+                this.countdownListener.onCountdown(0);
+            } else if (countdown < 0) {
+                this.countdownListener.onEnd();
+                this.stop();
+            }
+           this.countdown--;
+        }, 0L, 20L);
 	}
 	
 	/**

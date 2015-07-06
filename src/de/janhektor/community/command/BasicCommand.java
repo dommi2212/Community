@@ -37,10 +37,10 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	private TabCompleter tabCompleter;
 	
 	private final String name;
-	private final CommandSettings settings;
+	private final ICommandSettings settings;
 	private final Plugin plugin;
 	
-	public BasicCommand(String name, CommandSettings settings, Plugin plugin) {
+	public BasicCommand(String name, ICommandSettings settings, Plugin plugin) {
 		Validate.notNull( name, "Name cannot be null!" );
 		Validate.notNull( settings, "Settings cannot be null!" );
 		Validate.notNull( plugin, "Plugin cannot be null!" );
@@ -160,9 +160,9 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this);
 		} else if (this.aliases != null && this.usage == null) {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this, this.aliases);
-		} else if (this.aliases == null && this.usage != null) {
+		} else if ( this.aliases == null ) {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this.usage, this);
-		} else if (this.aliases != null && this.usage != null) {
+		} else {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this.usage, this, this.aliases);
 		}
 		
