@@ -1,6 +1,7 @@
 package de.janhektor.community;
 
 import de.janhektor.community.config.LocationManager;
+import de.janhektor.community.tests.TestManager;
 
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +21,8 @@ public class Main extends JavaPlugin {
 	
 	private Locale locale;
 	private ResourceBundle resourceBundle;
+	
+	private boolean testsEnabled = false;
 
 	// ---------------------- [ Enable/Disable ] ---------------------- //
 	
@@ -30,6 +33,10 @@ public class Main extends JavaPlugin {
 		this.locale = new Locale("en");
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", this.locale);
 		this.locationManager = new LocationManager();
+		
+		if(this.testsEnabled) {
+			TestManager.getInstance().initTests();
+		}
 		
 		this.getLogger().log(Level.INFO, "Community plugin version " + this.getDescription().getVersion()
 				+ " by " + this.getDescription().getAuthors().toString() + " enabled!");
