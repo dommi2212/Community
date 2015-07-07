@@ -1,4 +1,4 @@
-package de.janhektor.community.utils;
+package de.janhektor.community.game.countdown;
 
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;

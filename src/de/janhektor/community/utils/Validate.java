@@ -14,7 +14,7 @@ public class Validate {
 		}
 	}
 
-	public static void notEmpty(Collection collection, String error){
+	public static void notEmpty(Collection<?> collection, String error){
 		if( collection.isEmpty() ){
 			throw new IllegalArgumentException( error );
 		}
