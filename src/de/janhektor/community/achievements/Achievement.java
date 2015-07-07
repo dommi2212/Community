@@ -30,7 +30,7 @@ public enum Achievement {
 	
 	static {
 		Achievement.BY_ID = new HashMap<>();
-		for(Achievement achievement : EnumSet.allOf(Achievement.class)) {
+		for (Achievement achievement : EnumSet.allOf(Achievement.class)) {
 			Achievement.BY_ID.put(achievement.name(), achievement);
 		}
 	}

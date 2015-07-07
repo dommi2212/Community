@@ -22,11 +22,11 @@ public class AchievementManager {
 	}
 	
 	public void notifyReach(Player player, Achievement achievement) {
-		if(!(this.reachedAchievements.containsKey(player.getUniqueId()))) {
+		if (!(this.reachedAchievements.containsKey(player.getUniqueId()))) {
 			this.reachedAchievements.put(player.getUniqueId(), new ArrayList<String>());
 		}
 		List<String> achievements = this.reachedAchievements.get(player.getUniqueId());
-		if(achievements.contains(achievement.name())) {
+		if (achievements.contains(achievement.name())) {
 			return;
 		}
 		achievements.add(achievement.name());
@@ -44,13 +44,13 @@ public class AchievementManager {
 	
 	public void loadAchievementListeners() {
 		Bukkit.getServer().getPluginManager().registerEvents(new AchievementJoinListener(), Main.getInstance());
-		for(Achievement achievement : Achievement.values()) {
+		for (Achievement achievement : Achievement.values()) {
 			Bukkit.getServer().getPluginManager().registerEvents(achievement.getHandler(), Main.getInstance());
 		}
 	}
 	
 	public static AchievementManager getInstance() {
-		if(AchievementManager.instance == null) {
+		if (AchievementManager.instance == null) {
 			AchievementManager.instance = new AchievementManager();
 		}
 		return AchievementManager.instance;

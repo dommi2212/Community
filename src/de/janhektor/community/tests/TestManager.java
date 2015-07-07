@@ -35,8 +35,8 @@ public class TestManager {
 				continue;
 			}
 			Annotation[] annotations = clazz.getDeclaredAnnotations();
-			for(Annotation annotation : annotations) {
-				if(annotation instanceof Test) {
+			for (Annotation annotation : annotations) {
+				if (annotation instanceof Test) {
 					this.testClasses.add(clazz);
 					break;
 				}
@@ -46,7 +46,7 @@ public class TestManager {
 	
 	public void initTests() {
 		Main.getInstance().getLogger().info("[Test] Initializing tests ... (" + testClasses.size() + " classes)");
-		for(Class<?> testClass : this.testClasses) {
+		for (Class<?> testClass : this.testClasses) {
 			Object testObject;
 			try {
 				testObject = testClass.newInstance();
@@ -54,10 +54,10 @@ public class TestManager {
 				e.printStackTrace();
 				continue;
 			}
-			for(Method method : testClass.getMethods()) {
+			for (Method method : testClass.getMethods()) {
 				Annotation[] annotations = method.getDeclaredAnnotations();
-				for(Annotation annotation : annotations) {
-					if(!(annotation instanceof TestMethod)) {
+				for (Annotation annotation : annotations) {
+					if (!(annotation instanceof TestMethod)) {
 						continue;
 					}
 					try {

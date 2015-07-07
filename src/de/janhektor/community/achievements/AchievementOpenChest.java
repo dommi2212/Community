@@ -31,7 +31,7 @@ public class AchievementOpenChest extends AchievementBase {
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event) {
-		if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && event.getClickedBlock().getType().equals(Material.CHEST)) {
+		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && event.getClickedBlock().getType().equals(Material.CHEST)) {
 			AchievementManager.getInstance().notifyReach(event.getPlayer(), this.getAchievement());
 		}
 	}
