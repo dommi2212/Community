@@ -8,6 +8,8 @@ import java.util.logging.Level;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.janhektor.community.achievements.AchievementManager;
+import de.janhektor.community.config.AchievementFileManager;
 import de.janhektor.community.config.LocationManager;
 import de.janhektor.community.tests.TestManager;
 
@@ -20,7 +22,8 @@ public class Main extends JavaPlugin {
 	
 	// ---------------------- [ Members ] ---------------------- //
 	private LocationManager locationManager;
-
+	private AchievementFileManager achievementFileManager;
+	
 	private ResourceBundle resourceBundle;
 	
 	private boolean testsEnabled = false;
@@ -37,10 +40,13 @@ public class Main extends JavaPlugin {
 		Locale locale = new Locale( "en" );
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", locale );
 		this.locationManager = new LocationManager();
+		this.achievementFileManager = new AchievementFileManager();
 		
 		if(this.testsEnabled) {
 			TestManager.getInstance().initTests();
 		}
+		
+		AchievementManager.getInstance().loadAchievementListeners();
 
 		long stopTime = System.currentTimeMillis();
 		
@@ -52,6 +58,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		ResourceBundle.clearCache();
+		this.achievementFileManager.save();
 	}
 
 
@@ -63,7 +70,11 @@ public class Main extends JavaPlugin {
 	}
 	
 	public LocationManager getLocationManager() {
-		return locationManager;
+		return this.locationManager;
+	}
+	
+	public AchievementFileManager getAchievementFileManager() {
+		return this.achievementFileManager;
 	}
 
 	public String getString(String key, Object... replacements) {
@@ -73,7 +84,7 @@ public class Main extends JavaPlugin {
 	}
 
 	public static Main getInstance() {
-		return instance;
+		return Main.instance;
 	}
 	
 	
