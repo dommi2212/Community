@@ -26,6 +26,7 @@ local.properties
 .settings/
 .loadpath
 .project
+.classpath
 
 ### Maven ###
 target/
