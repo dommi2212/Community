@@ -8,6 +8,10 @@ import java.util.logging.Level;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.janhektor.community.command.dyncmd.BasicCommand;
+import de.janhektor.community.command.dyncmd.SimpleCommandSettings;
+import de.janhektor.community.commands.ArgumentExample;
+import de.janhektor.community.commands.ExecutorCommunity;
 import de.janhektor.community.config.LocationManager;
 
 public class Main extends JavaPlugin {
@@ -20,6 +24,8 @@ public class Main extends JavaPlugin {
 	private LocationManager locationManager;
 
 	private ResourceBundle resourceBundle;
+	
+	private BasicCommand mainCmd;
 
 	
 	// ---------------------- [ Enable/Disable ] ---------------------- //
@@ -30,9 +36,11 @@ public class Main extends JavaPlugin {
 		
 		Main.instance = this;
 
-		Locale locale = new Locale( "en" );
+		Locale locale = new Locale("en");
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", locale );
 		this.locationManager = new LocationManager();
+		
+		this.createCommand();
 		
 		long stopTime = System.currentTimeMillis();
 		
@@ -53,7 +61,11 @@ public class Main extends JavaPlugin {
 	}
 	
 	public LocationManager getLocationManager() {
-		return locationManager;
+		return this.locationManager;
+	}
+	
+	public BasicCommand getMainCommand() {
+		return this.mainCmd;
 	}
 
 	public String getString(String key, Object... replacements) {
@@ -63,10 +75,22 @@ public class Main extends JavaPlugin {
 	}
 
 	public static Main getInstance() {
-		return instance;
+		return Main.instance;
 	}
 	
 	
 	// ---------------------- [Private Methods] ---------------------- //
+	
+	private void createCommand() {
+		SimpleCommandSettings settings = new SimpleCommandSettings(); //Maybe someone could write an implemention, to suport our ResourceBundle.
+		
+		this.mainCmd = new BasicCommand("community", settings, this);
+		this.mainCmd.setAliases("comm");
+		this.mainCmd.setDescription("The main-command");
+		this.mainCmd.setPermission("community.cmd");
+		this.mainCmd.setDefaultExecutor(new ExecutorCommunity(this.mainCmd));
+		this.mainCmd.registerArgument("example", new ArgumentExample(this));
+		this.mainCmd.create();
+	}
 
 }
