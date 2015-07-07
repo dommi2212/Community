@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.janhektor.community.config.LocationManager;
+import de.janhektor.community.gameprocess.GameState;
 
 public class Main extends JavaPlugin {
 
@@ -39,6 +40,8 @@ public class Main extends JavaPlugin {
 		
 		this.getLogger().log(Level.INFO, "Community plugin version " + this.getDescription().getVersion()
 				+ " by " + this.getAuthors() + " enabled! (" + (stopTime - startTime) + " ms)");
+		
+		GameState.next();
 	}
 
 	@Override
