@@ -31,7 +31,9 @@ public abstract class FileManager {
 	 * Creates a new file every time. Use {@link #createFileIfNotExistst()} to create the file only if it doesn't exist.
 	 */
 	protected void createFile() {
-		if(!file.getParentFile().exists()) file.getParentFile().mkdir();
+		if (!file.getParentFile().exists()) {
+			file.getParentFile().mkdir();
+		}
 		try {
 			file.createNewFile();
 		} catch (IOException e) {
@@ -43,7 +45,9 @@ public abstract class FileManager {
 	 * Creates the file only if it doesn't exist.
 	 */
 	protected void createFileIfNotExists() {
-		if(!file.exists()) createFile();
+		if (!file.exists()) {
+			createFile();
+		}
 	}
 	
 	/**
@@ -79,7 +83,9 @@ public abstract class FileManager {
 	 * @throws IllegalArgumentException if the size of the lists isn't equal.
 	 */
 	public void set(List<String> paths, List<Object> values) {
-		if(paths.size() != values.size()) throw new IllegalArgumentException("Size of paths and values has to be equal!");
+		if (paths.size() != values.size()) {
+			throw new IllegalArgumentException("Size of paths and values has to be equal!");
+		}
 		
 		for(int i = 0; i < paths.size(); i++) {
 			config.set(paths.get(i), values.get(i));
@@ -115,7 +121,7 @@ public abstract class FileManager {
 	 * @throws IllegalArgumentException if the size of the lists isn't equal.
 	 */
 	public void setAndSave(List<String> paths, List<Object> values) {
-		set(paths, values);
+		this.set(paths, values);
 		try {
 			config.save(file);
 		} catch (IOException e) {
