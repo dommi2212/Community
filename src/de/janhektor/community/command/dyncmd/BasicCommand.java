@@ -1,4 +1,4 @@
-package de.janhektor.community.command;
+package de.janhektor.community.command.dyncmd;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,9 +41,9 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	private final Plugin plugin;
 	
 	public BasicCommand(String name, CommandSettings settings, Plugin plugin) {
-		Validate.notNull( name, "Name cannot be null!" );
-		Validate.notNull( settings, "Settings cannot be null!" );
-		Validate.notNull( plugin, "Plugin cannot be null!" );
+		Validate.notNull(name, "Name cannot be null!");
+		Validate.notNull(settings, "Settings cannot be null!");
+		Validate.notNull(plugin, "Plugin cannot be null!");
 
 		this.name = name;
 		this.plugin = plugin;
@@ -160,9 +160,9 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this);
 		} else if (this.aliases != null && this.usage == null) {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this, this.aliases);
-		} else if (this.aliases == null && this.usage != null) {
+		} else if ( this.aliases == null ) {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this.usage, this);
-		} else if (this.aliases != null && this.usage != null) {
+		} else {
 			dynCmd = new DynamicCommand(this.plugin, this.name, descr, this.usage, this, this.aliases);
 		}
 		
@@ -194,8 +194,8 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	}
 	
 	public void registerArgument(String name, Argument<?> arg) {
-		Validate.notNull( name, "Name cannot be null!" );
-		Validate.notNull( arg, "Argument cannot be null!" );
+		Validate.notNull(name, "Name cannot be null!");
+		Validate.notNull(arg, "Argument cannot be null!");
 
 		this.arguments.put(name, arg);
 	}
@@ -205,7 +205,7 @@ public class BasicCommand implements CommandExecutor, PluginIdentifiableCommand 
 	}
 
 	public Argument<?> getArgument(String name) {
-		Validate.notNull( name, "Name cannot be null!" );
+		Validate.notNull(name, "Name cannot be null!");
 
 		return this.arguments.get(name);
 	}

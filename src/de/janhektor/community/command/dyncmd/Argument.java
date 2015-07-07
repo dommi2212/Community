@@ -1,4 +1,4 @@
-package de.janhektor.community.command;
+package de.janhektor.community.command.dyncmd;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -8,7 +8,7 @@ import de.janhektor.community.utils.Validate;
 
 public abstract class Argument<T extends Plugin> {
 	
-	private final T plugin;
+	protected final T plugin;
 	
 	public Argument(T plugin) {
 		Validate.notNull(plugin, "Plugin cannot be null!");
