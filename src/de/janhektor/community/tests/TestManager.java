@@ -37,7 +37,7 @@ public class TestManager {
 			Annotation[] annotations = clazz.getDeclaredAnnotations();
 			for(Annotation annotation : annotations) {
 				if(annotation instanceof Test) {
-					testClasses.add(clazz);
+					this.testClasses.add(clazz);
 					break;
 				}
 			}
@@ -46,7 +46,7 @@ public class TestManager {
 	
 	public void initTests() {
 		Main.getInstance().getLogger().info("[Test] Initializing tests ... (" + testClasses.size() + " classes)");
-		for(Class<?> testClass : testClasses) {
+		for(Class<?> testClass : this.testClasses) {
 			Object testObject;
 			try {
 				testObject = testClass.newInstance();
