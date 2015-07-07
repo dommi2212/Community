@@ -1,5 +1,6 @@
 package de.janhektor.community;
 
+import java.io.File;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -32,7 +33,7 @@ public class Main extends JavaPlugin {
 
 		Locale locale = new Locale( "en" );
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", locale );
-		this.locationManager = new LocationManager();
+		this.locationManager = new LocationManager(new File(this.getDataFolder() + File.separator + "locations.yml"));
 		
 		long stopTime = System.currentTimeMillis();
 		
