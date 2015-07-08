@@ -52,15 +52,19 @@ public final class Log{
    * @param print wether 'msg' schould be printed in console
    * @throws IOException could not close BufferedWriter
    */
-  public static void logInfo(String msg, boolean print) throws IOException{
+  public static void logInfo(String msg, boolean print){
     if(doLog){
-      bw.write(dateTime + " INFO: " + msg);
-      bw.newLine();
+      try{
+        bw.write(dateTime + " INFO: " + msg);
+        bw.newLine();
+        bw.close();
+      }catch(IOException e){
+        e.printStackTrace();
+      }
       if(print){
         System.out.println(prefix + "INFO: \"" + msg + "\"");
       }
     }
-    bw.close();
   }
 
   /**
@@ -70,15 +74,19 @@ public final class Log{
    * @param print wether 'msg' schould be printed in console
    * @throws IOException could not close BufferedWriter
    */
-  public static void logWarning(String msg, boolean print) throws IOException{
+  public static void logWarning(String msg, boolean print){
     if(doLog){
-      bw.write(dateTime + " WARNING: " + msg);
-      bw.newLine();
+      try{
+        bw.write(dateTime + " WARNING: " + msg);
+        bw.newLine();
+        bw.close();
+      }catch(IOException e){
+        e.printStackTrace();
+      }
       if(print){
         System.err.println(prefix + "WARNING: \"" + msg + "\"");
       }
     }
-    bw.close();
   }
 
   /**
@@ -88,35 +96,39 @@ public final class Log{
    * @param print wether 'msg' schould be printed in console
    * @throws IOException could not close BufferedWriter
    */
-  public static void logConfig(String msg, boolean print) throws IOException{
+  public static void logConfig(String msg, boolean print){
     if(doLog){
-      bw.write(dateTime + " CONFIG: " + msg);
-      bw.newLine();
+      try{
+        bw.write(dateTime + " CONFIG: " + msg);
+        bw.newLine();
+        bw.close();
+      }catch(IOException e){
+        e.printStackTrace();
+      }
       if(print){
         System.out.println(prefix + "CONFIG: \"" + msg + "\"");
       }
     }
-    bw.close();
   }
 
   /**
    * calls logInfo(msg, false)
    */
-  public static void logInfo(String msg) throws IOException{
+  public static void logInfo(String msg){
     logInfo(msg, false);
   }
 
   /**
    * calls logWarning(msg, false)
    */
-  public static void logWarning(String msg) throws IOException{
+  public static void logWarning(String msg){
     logWarning(msg, false);
   }
 
   /**
    * calls logConfig(msg, false)
    */
-  public static void logConfig(String msg) throws IOException{
+  public static void logConfig(String msg){
     logConfig(msg, false);
   }
 
