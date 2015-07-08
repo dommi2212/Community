@@ -32,14 +32,14 @@ public class AchievementManager {
 		achievements.add(achievement.name());
 		this.reachedAchievements.remove(player.getUniqueId());
 		this.reachedAchievements.put(player.getUniqueId(), achievements);
-		Main.getInstance().getAchievementFileManager().setReachedAchievements(player, this.reachedAchievements.get(player.getUniqueId()));
+		Main.getInstance().getAchievementDataManager().setReachedAchievements(player, this.reachedAchievements.get(player.getUniqueId()));
 		player.sendMessage(Main.getInstance().getString("AchievementReached", achievement.getHandler().getName()));
 		player.playSound(player.getLocation(), Sound.LEVEL_UP, 10, 0);
 	}
 	
 	public void loadAchievements(Player player) {
-		System.out.println("LOADING " + Main.getInstance().getAchievementFileManager().getReachedAchievements(player).size());
-		this.reachedAchievements.put(player.getUniqueId(), Main.getInstance().getAchievementFileManager().getReachedAchievements(player));
+		System.out.println("LOADING " + Main.getInstance().getAchievementDataManager().getReachedAchievements(player).size());
+		this.reachedAchievements.put(player.getUniqueId(), Main.getInstance().getAchievementDataManager().getReachedAchievements(player));
 	}
 	
 	public void loadAchievementListeners() {
