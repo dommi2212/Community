@@ -9,8 +9,11 @@ import java.util.logging.Level;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.janhektor.community.achievements.AbstractAchievementDataManager;
+import de.janhektor.community.achievements.AchievementManager;
 import de.janhektor.community.config.LocationManager;
 import de.janhektor.community.game.states.GameStateManager;
+import de.janhektor.community.tests.TestManager;
 
 public class Main extends JavaPlugin {
 
@@ -19,8 +22,11 @@ public class Main extends JavaPlugin {
 
 	// ---------------------- [ Members ] ---------------------- //
 	private LocationManager locationManager;
-
+	private AbstractAchievementDataManager achievementDataManager;
+	
 	private ResourceBundle resourceBundle;
+	
+	private boolean testsEnabled = false;
 
 	private GameStateManager gamestateManager;
 
@@ -36,9 +42,17 @@ public class Main extends JavaPlugin {
 		long startTime = System.currentTimeMillis();
 
 		Locale locale = new Locale("en");
-		this.resourceBundle = ResourceBundle.getBundle("resources.strings", locale);
-		this.locationManager = new LocationManager(new File(this.getDataFolder() + File.separator + "locations.yml"));
+		this.resourceBundle = ResourceBundle.getBundle("resources.strings", locale );
+		this.locationManager = new LocationManager(new File(this.getDataFolder(), "locations.yml"));
+		this.achievementDataManager = null; // TODO MySQL Data manager
 		
+		
+		if (this.testsEnabled) {
+			TestManager.getInstance().initTests();
+		}
+		
+		AchievementManager.getInstance().loadAchievementListeners();
+
 		this.gamestateManager = new GameStateManager();
 		this.gamestateManager.next(); // only debug
 		
@@ -55,6 +69,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		ResourceBundle.clearCache();
+		this.achievementDataManager.save();
 	}
 
 	// ---------------------- [ Methods ] ---------------------- //
@@ -64,7 +79,11 @@ public class Main extends JavaPlugin {
 	}
 
 	public LocationManager getLocationManager() {
-		return locationManager;
+		return this.locationManager;
+	}
+	
+	public AbstractAchievementDataManager getAchievementDataManager() {
+		return this.achievementDataManager;
 	}
 
 	public String getString(String key, Object... replacements) {
@@ -78,7 +97,7 @@ public class Main extends JavaPlugin {
 	}
 
 	public static Main getInstance() {
-		return instance;
+		return Main.instance;
 	}
 
 	// ---------------------- [Private Methods] ---------------------- //

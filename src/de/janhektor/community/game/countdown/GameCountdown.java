@@ -7,7 +7,6 @@ import de.janhektor.community.Main;
 
 /**
  * Useful countdown class to make countdowns easily.
- * @author Alex
  */
 public class GameCountdown {
 	
@@ -64,7 +63,6 @@ public class GameCountdown {
 	
 	/**
 	 * A listener for handling countdown events
-	 * @author Alex
 	 */
 	public static interface CountdownListener {
 		
