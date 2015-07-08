@@ -28,7 +28,7 @@ public abstract class FileManager {
 	}
 	
 	/**
-	 * Creates a new file every time. Use {@link #createFileIfNotExistst()} to create the file only if it doesn't exist.
+	 * Creates a new file every time. Use {@link #createFileIfNotExists()} to create the file only if it doesn't exist.
 	 */
 	protected void createFile() {
 		if (!file.getParentFile().exists()) {
