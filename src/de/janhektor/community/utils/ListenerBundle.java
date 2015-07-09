@@ -45,6 +45,6 @@ public class ListenerBundle {
 	
 	public void add(Listener listener, Listener... listeners) {
 		this.listeners.add(listener);
-		this.listeners.addAll(Arrays.asList(listener));
+		this.listeners.addAll(Arrays.asList(listeners));
 	}
 }
