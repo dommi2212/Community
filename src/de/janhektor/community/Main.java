@@ -11,6 +11,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import de.janhektor.community.achievements.AbstractAchievementDataManager;
 import de.janhektor.community.achievements.AchievementManager;
+import de.janhektor.community.command.dyncmd.BasicCommand;
+import de.janhektor.community.command.dyncmd.SimpleCommandSettings;
+import de.janhektor.community.commands.ArgumentExample;
+import de.janhektor.community.commands.ExecutorCommunity;
 import de.janhektor.community.config.LocationManager;
 import de.janhektor.community.game.states.GameStateManager;
 import de.janhektor.community.tests.TestManager;
@@ -22,9 +26,12 @@ public class Main extends JavaPlugin {
 
 	// ---------------------- [ Members ] ---------------------- //
 	private LocationManager locationManager;
-	private AbstractAchievementDataManager achievementDataManager;
-	
+
 	private ResourceBundle resourceBundle;
+	
+	private BasicCommand mainCmd;
+
+	private AbstractAchievementDataManager achievementDataManager;
 	
 	private boolean testsEnabled = false;
 
@@ -46,6 +53,9 @@ public class Main extends JavaPlugin {
 		this.locationManager = new LocationManager(new File(this.getDataFolder(), "locations.yml"));
 		this.achievementDataManager = null; // TODO MySQL Data manager
 		
+		this.createCommand();
+		
+		long stopTime = System.currentTimeMillis();
 		
 		if (this.testsEnabled) {
 			TestManager.getInstance().initTests();
@@ -56,11 +66,7 @@ public class Main extends JavaPlugin {
 		this.gamestateManager = new GameStateManager();
 		this.gamestateManager.next(); // only debug
 		
-		long stopTime = System.currentTimeMillis();
-
-		this.getLogger().log(
-				Level.INFO,
-				"Community plugin version "
+		this.getLogger().log(Level.INFO, "Community plugin version "
 						+ this.getDescription().getVersion() + " by "
 						+ this.getAuthors() + " enabled! ("
 						+ (stopTime - startTime) + " ms)");
@@ -82,6 +88,10 @@ public class Main extends JavaPlugin {
 		return this.locationManager;
 	}
 	
+	public BasicCommand getMainCommand() {
+		return this.mainCmd;
+	}
+	
 	public AbstractAchievementDataManager getAchievementDataManager() {
 		return this.achievementDataManager;
 	}
@@ -101,5 +111,17 @@ public class Main extends JavaPlugin {
 	}
 
 	// ---------------------- [Private Methods] ---------------------- //
+	
+	private void createCommand() {
+		SimpleCommandSettings settings = new SimpleCommandSettings(); //Maybe someone could write an implemention, to suport our ResourceBundle.
+		
+		this.mainCmd = new BasicCommand("community", settings, this);
+		this.mainCmd.setAliases("comm");
+		this.mainCmd.setDescription("The main-command");
+		this.mainCmd.setPermission(null);
+		this.mainCmd.setDefaultExecutor(new ExecutorCommunity(this.mainCmd));
+		this.mainCmd.registerArgument("example", new ArgumentExample(this));
+		this.mainCmd.create();
+	}
 
 }
