@@ -1,4 +1,4 @@
-package de.janhektor.community.commands;
+package de.janhektor.community.command.exec;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

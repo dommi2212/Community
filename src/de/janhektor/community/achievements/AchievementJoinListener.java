@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class AchievementJoinListener implements Listener {
 
 	@EventHandler
-	public void onJoin(PlayerJoinEvent event) {
+	public void onJoin (PlayerJoinEvent event) {
 		AchievementManager.getInstance().loadAchievements(event.getPlayer());
 	}
 	

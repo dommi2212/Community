@@ -13,8 +13,8 @@ import de.janhektor.community.achievements.AbstractAchievementDataManager;
 import de.janhektor.community.achievements.AchievementManager;
 import de.janhektor.community.command.dyncmd.BasicCommand;
 import de.janhektor.community.command.dyncmd.SimpleCommandSettings;
-import de.janhektor.community.commands.ArgumentExample;
-import de.janhektor.community.commands.ExecutorCommunity;
+import de.janhektor.community.command.exec.ArgumentExample;
+import de.janhektor.community.command.exec.ExecutorCommunity;
 import de.janhektor.community.config.LocationManager;
 import de.janhektor.community.game.states.GameStateManager;
 import de.janhektor.community.tests.TestManager;
@@ -25,6 +25,7 @@ public class Main extends JavaPlugin {
 	private static Main instance;
 
 	// ---------------------- [ Members ] ---------------------- //
+	
 	private LocationManager locationManager;
 
 	private ResourceBundle resourceBundle;
@@ -51,7 +52,7 @@ public class Main extends JavaPlugin {
 		Locale locale = new Locale("en");
 		this.resourceBundle = ResourceBundle.getBundle("resources.strings", locale );
 		this.locationManager = new LocationManager(new File(this.getDataFolder(), "locations.yml"));
-		this.achievementDataManager = null; // TODO MySQL Data manager
+		//this.achievementDataManager = null; // TODO MySQL Data manager
 		
 		this.createCommand();
 		
@@ -64,18 +65,19 @@ public class Main extends JavaPlugin {
 		AchievementManager.getInstance().loadAchievementListeners();
 
 		this.gamestateManager = new GameStateManager();
-		this.gamestateManager.next(); // only debug
 		
 		this.getLogger().log(Level.INFO, "Community plugin version "
 						+ this.getDescription().getVersion() + " by "
 						+ this.getAuthors() + " enabled! ("
 						+ (stopTime - startTime) + " ms)");
+		
+		this.saveDefaultConfig();
 	}
 
 	@Override
 	public void onDisable() {
 		ResourceBundle.clearCache();
-		this.achievementDataManager.save();
+		//this.achievementDataManager.save();
 	}
 
 	// ---------------------- [ Methods ] ---------------------- //
@@ -100,6 +102,10 @@ public class Main extends JavaPlugin {
 		String result = this.resourceBundle.getString(key);
 		result = MessageFormat.format(result, replacements);
 		return ChatColor.translateAlternateColorCodes('&', result);
+	}
+	
+	public String getPrefix() {
+		return ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("General.Prefix")) + "§r ";
 	}
 
 	public GameStateManager getGamestateManager() {
