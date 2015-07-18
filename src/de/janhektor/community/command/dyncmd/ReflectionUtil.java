@@ -61,7 +61,7 @@ public final class ReflectionUtil {
 		} catch (NoSuchFieldException e) {
 			throw new ReflectException("Could not find the field '" + name + "' in class '" + clazz.getName() + "'!");
 		} catch (SecurityException e) {
-			throw new ReflectException("An securityerror occured!");
+			throw new ReflectException("A security error occured!");
 		} 
 	}
 	

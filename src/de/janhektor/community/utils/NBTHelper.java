@@ -216,6 +216,130 @@ public class NBTHelper {
 	}
 	
 	/**
+	 * Sets a byte with the key and value in the NBT tag
+	 * @param key The key
+	 * @param value The value
+	 * @return The NBTModifier itself
+	 */
+	public NBTHelper setByte(String key, Byte value) {
+		try {
+			Method setByte = this.nbtTagCompound.getClass().getMethod("setByte", String.class, byte.class);
+			setByte.invoke(this.nbtTagCompound, key, value);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+	
+	/**
+	 * Gets the byte associated with the given key
+	 * @param key The key
+	 * @return The byte
+	 */
+	public Byte getByte(String key) {
+		try {
+			Method getByte = this.nbtTagCompound.getClass().getMethod("getByte", String.class);
+			return (Byte) getByte.invoke(this.nbtTagCompound, key);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
+	 * Sets a float with the key and value in the NBT tag
+	 * @param key The key
+	 * @param value The value
+	 * @return The NBTModifier itself
+	 */
+	public NBTHelper setFloat(String key, Float value) {
+		try {
+			Method setFloat = this.nbtTagCompound.getClass().getMethod("setFloat", String.class, float.class);
+			setFloat.invoke(this.nbtTagCompound, key, value);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+	
+	/**
+	 * Gets the float associated with the given key
+	 * @param key The key
+	 * @return The byte
+	 */
+	public Float getFloat(String key) {
+		try {
+			Method getFloat = this.nbtTagCompound.getClass().getMethod("getFloat", String.class);
+			return (Float) getFloat.invoke(this.nbtTagCompound, key);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
+	 * Sets a long with the key and value in the NBT tag
+	 * @param key The key
+	 * @param value The value
+	 * @return The NBTModifier itself
+	 */
+	public NBTHelper setLong(String key, Long value) {
+		try {
+			Method setLong = this.nbtTagCompound.getClass().getMethod("setLong", String.class, long.class);
+			setLong.invoke(this.nbtTagCompound, key, value);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+	
+	/**
+	 * Gets the long associated with the given key
+	 * @param key The key
+	 * @return The byte
+	 */
+	public Long getLong(String key) {
+		try {
+			Method getLong = this.nbtTagCompound.getClass().getMethod("getLong", String.class);
+			return (Long) getLong.invoke(this.nbtTagCompound, key);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
+	 * Sets a short with the key and value in the NBT tag
+	 * @param key The key
+	 * @param value The value
+	 * @return The NBTModifier itself
+	 */
+	public NBTHelper setShort(String key, Short value) {
+		try {
+			Method setShort = this.nbtTagCompound.getClass().getMethod("setShort", String.class, short.class);
+			setShort.invoke(this.nbtTagCompound, key, value);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+	
+	/**
+	 * Gets the short associated with the given key
+	 * @param key The key
+	 * @return The byte
+	 */
+	public Short getShort(String key) {
+		try {
+			Method getShort = this.nbtTagCompound.getClass().getMethod("getShort", String.class);
+			return (Short) getShort.invoke(this.nbtTagCompound, key);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
 	 * Modifies the itemstack
 	 * @return The modified itemstack
 	 */

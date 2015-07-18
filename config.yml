@@ -1,0 +1,18 @@
+#######################
+## Community Project ##
+#######################
+
+General:
+  Prefix: '&7[&3Community&7]'
+  
+  
+Game:
+  GracePeriodEnabled: true
+
+  
+# All time values in seconds!
+CountdownDuration:
+  Lobby: 120
+  Start: 30
+  Grace: 120
+  Game: 3600

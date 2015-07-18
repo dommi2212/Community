@@ -5,7 +5,8 @@ import java.util.Map;
 
 import org.bukkit.Location;
 
-public class LocationManager extends FileManager {
+@SuppressWarnings("unchecked")
+public class LocationManager extends AbstractFileManager {
 	
 	public LocationManager(File file) {
 		super(file);
@@ -13,7 +14,7 @@ public class LocationManager extends FileManager {
 	
 	@Override
 	protected void init() {
-		createFileIfNotExists();
+		super.createFileIfNotExists();
 	}
 
 	/**
@@ -21,7 +22,6 @@ public class LocationManager extends FileManager {
 	 * @param key The identifier to load location from.
 	 * @return The result (location).
 	 */
-	@SuppressWarnings("unchecked")
 	public Location getLocation(String key) {
 		Object value = getConfig().get(key);
 		if (value instanceof Map) {
